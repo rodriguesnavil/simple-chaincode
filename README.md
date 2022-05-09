@@ -1,4 +1,19 @@
+# Pre-requisites
+Install Node.js
 
+```bash
+# add PPA from NodeSource
+curl -sL https://deb.nodesource.com/setup_16.8.0 -o nodesource_setup.sh
+
+# call the install script
+. nodesource_setup.sh
+
+# install Node.js
+sudo apt-get install -y nodejs
+
+# check the version
+node -v
+```
 # The Contract Class
 In Hyperledger Fabric, a smart contract needs to inherit all the methods from the contract class which is provided in the fabric-contract-api npm package. These different methods are called in response to transactions that are invoked on the blockchain. The Contract class is declared in the fabric-contract-api npm package:
 
@@ -14,8 +29,7 @@ export class Contract {
 }
 ```
 
-Considering the above, we can implement a simple contract, that does nothing valuable, but can be
-operated in the network:
+Considering the above, we can implement a class SimpleContract that extends the Contract class and use context object (ctx) in order to consume APIs to get, update and delete state in the Blockchain ledger:
 ```bash
 'use strict';
 
